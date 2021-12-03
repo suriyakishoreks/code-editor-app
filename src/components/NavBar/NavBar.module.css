@@ -1,0 +1,12 @@
+.navbar {
+    box-sizing: border-box;
+    height: 8vh;
+    border-bottom: 0.25vh solid rgb(148, 148, 148);
+    width: 100vw;
+    padding: 1vh 10px;
+}
+
+.label {
+    color:rgb(125, 213, 248);
+    font-size: 3vh;
+}

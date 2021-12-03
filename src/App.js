@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment,useState ,useEffect} from 'react';
+import Editor from './components/Editor/Editor';
+import Iframe from './components/Iframe/Iframe';
+import NavBar from './components/NavBar/NavBar';
+
+import {defaultValue} from './default';
 
 function App() {
+  const [editorText, setEditorText] = useState("");
+  const [srcDoc, setSrcDoc] = useState("");
+  const [theme, setTheme] = useState("twilight");
+
+  useEffect(()=> {
+    setSrcDoc(defaultValue);
+    setEditorText(defaultValue);
+  },[]);
+
+  function onChangeHandler(val) {
+    setEditorText(val);
+  }
+
+  function themeHandler(state) {
+    if (state === true) {
+      setTheme("twilight");
+    }
+    else
+      setTheme("chrome");
+  }
+
+  function submitHandler() {
+    setSrcDoc(editorText);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment >
+      <NavBar themeHandler={themeHandler} onSubmit={submitHandler}/>
+      <Editor onChange = {onChangeHandler} theme={theme} />
+      <Iframe srcDoc = {srcDoc} />
+    </Fragment>
   );
 }
 

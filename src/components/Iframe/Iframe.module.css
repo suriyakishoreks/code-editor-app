@@ -1,0 +1,13 @@
+.iframediv {
+    width : 50vw;
+    height: 90vh; 
+    display: inline-block; 
+}
+
+.iframe {
+    height: 100%;
+    width: 100%;
+    /* border: none; */
+    box-sizing: border-box;
+    border: 2px solid rgb(85, 85, 85);
+}
